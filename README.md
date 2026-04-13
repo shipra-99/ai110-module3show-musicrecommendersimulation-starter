@@ -44,7 +44,7 @@ Songs are scored based on these rules and then ranked from highest to lowest sco
 ---
 ### System Flow
 
-```mermaid
+
 flowchart TD
     A[User Preferences] --> B[Load Songs from CSV]
     B --> C[Loop through each Song]
