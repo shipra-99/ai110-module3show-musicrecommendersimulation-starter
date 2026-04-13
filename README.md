@@ -16,18 +16,70 @@ Replace this paragraph with your own summary of what your version does.
 ---
 
 ## How The System Works
+This recommender system simulates how platforms like Spotify recommend songs using a content-based approach. It compares a user’s preferences with song features and suggests the closest matches.
 
-Explain your design in plain language.
+Each `Song` uses features like **genre, mood, energy, valence, danceability, acousticness, and tempo_bpm** to represent its overall vibe.
 
-Some prompts to answer:
+The `UserProfile` stores preferences such as **favorite genre, mood, and target values for energy and valence**.
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
+The `Recommender` gives each song a score by:
 
-You can include a simple diagram or bullet list if helpful.
+* rewarding **genre and mood matches**
+* adding points based on how close numerical features (like energy) are to user preferences
+
+Finally, all songs are **ranked by score**, and the top **K songs** are recommended to the user.
+
+---
+** Algorithm Recipe **
++2.0 points for genre match
++1.5 points for mood match
+Similarity-based scoring for numerical features:
+Energy → 1 - |song_energy - user_energy|
+Valence → 1 - |song_valence - user_valence|
+Danceability → 1 - |song_danceability - user_danceability|
+Acousticness → 1 - |song_acousticness - user_acousticness|
+
+Songs are scored based on these rules and then ranked from highest to lowest score. The top K songs are recommended.
+
+---
+### System Flow
+
+```mermaid
+flowchart TD
+    A[User Preferences] --> B[Load Songs from CSV]
+    B --> C[Loop through each Song]
+    C --> D[Apply Scoring Logic]
+    D --> E[Assign Score + Reasons]
+    E --> F[Store Results]
+    F --> G[Sort by Score]
+    G --> H[Select Top K Songs]
+    H --> I[Return Recommendations]
+
+
+---
+
+## 🧠 What this shows (simple understanding)
+
+- Input → user preferences  
+- Process → compare with each song + score  
+- Output → ranked top recommendations  
+
+---
+
+## ⚠️ Quick check (important)
+
+Make sure your diagram reflects:
+- Loop over **each song** ✔  
+- Scoring step ✔  
+- Sorting step ✔  
+- Top K selection ✔  
+
+
+Potential Biases
+The system may over-prioritize genre, causing it to ignore songs that match the user’s mood but belong to a different genre.
+Songs with similar energy and valence may rank high even if they don’t fully match the user’s taste.
+The dataset is small, so recommendations may lack diversity and repeat similar types of songs.
+The system does not consider factors like lyrics or context, so it may miss deeper emotional meaning.
 
 ---
 
@@ -67,6 +119,12 @@ You can add more tests in `tests/test_recommender.py`.
 ---
 
 ## Experiments You Tried
+
+
+## Sample CLI Output
+
+![Recommender Output](output.png)
+
 
 Use this section to document the experiments you ran. For example:
 
