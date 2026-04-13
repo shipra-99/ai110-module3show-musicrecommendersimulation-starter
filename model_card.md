@@ -2,60 +2,41 @@
 
 ## 1. Model Name  
 
-Give your model a short, descriptive name.  
-Example: **VibeFinder 1.0**  
+**VibeMatch 1.0**  
 
 ---
 
 ## 2. Intended Use  
 
-Describe what your recommender is designed to do and who it is for. 
+This recommender is designed to suggest songs based on a user’s preferences such as genre, mood, and energy. It assumes that users have clear taste preferences that can be represented using a few features.
 
-Prompts:  
-
-- What kind of recommendations does it generate  
-- What assumptions does it make about the user  
-- Is this for real users or classroom exploration  
+This system is built for classroom exploration to understand how basic recommendation systems work, not for real-world deployment.
 
 ---
 
 ## 3. How the Model Works  
 
-Explain your scoring approach in simple language.  
+The model uses features like genre, mood, energy, valence, danceability, and acousticness to represent each song. The user provides preferences for these features, such as preferred genre and target energy level.
 
-Prompts:  
+The system assigns a score to each song by giving higher points for matching genre and mood, and by calculating similarity scores for numerical features like energy and valence. Songs that are closer to the user’s preferences receive higher scores.
 
-- What features of each song are used (genre, energy, mood, etc.)  
-- What user preferences are considered  
-- How does the model turn those into a score  
-- What changes did you make from the starter logic  
-
-Avoid code here. Pretend you are explaining the idea to a friend who does not program.
+Finally, all songs are ranked based on their scores, and the top results are recommended.
 
 ---
 
 ## 4. Data  
 
-Describe the dataset the model uses.  
+The dataset contains around 20 songs with different genres such as pop, lofi, rock, jazz, EDM, and more. It includes features like mood, energy, valence, danceability, and acousticness.
 
-Prompts:  
-
-- How many songs are in the catalog  
-- What genres or moods are represented  
-- Did you add or remove data  
-- Are there parts of musical taste missing in the dataset  
+I expanded the dataset by adding more songs to increase diversity. However, the dataset is still small and does not include all types of music or deeper features like lyrics or user behavior.
 
 ---
 
 ## 5. Strengths  
 
-Where does your system seem to work well  
+The system works well for users with clear and consistent preferences, such as high-energy or chill music listeners. It correctly captures patterns like high-energy songs for energetic profiles and low-energy songs for relaxed profiles.
 
-Prompts:  
-
-- User types for which it gives reasonable results  
-- Any patterns you think your scoring captures correctly  
-- Cases where the recommendations matched your intuition  
+In many cases, the recommendations matched my intuition, especially for profiles like Chill Lofi and Intense Rock.
 
 ---
 
@@ -83,23 +64,15 @@ I also ran a small experiment by increasing the weight of energy and reducing ge
 
 ## 8. Future Work  
 
-Ideas for how you would improve the model next.  
-
-Prompts:  
-
-- Additional features or preferences  
-- Better ways to explain recommendations  
-- Improving diversity among the top results  
-- Handling more complex user tastes  
+Add more songs and genres to improve diversity
+Include user listening history for better personalization
+Improve scoring by dynamically adjusting weights
+Add advanced features like lyrics sentiment or artist similarity
 
 ---
 
 ## 9. Personal Reflection  
 
-A few sentences about your experience.  
+Through this project, I learned how simple scoring rules can simulate recommendation systems. It was interesting to see how small changes in weights can significantly affect the results.
 
-Prompts:  
-
-- What you learned about recommender systems  
-- Something unexpected or interesting you discovered  
-- How this changed the way you think about music recommendation apps  
+One surprising aspect was that even a simple system can produce recommendations that feel realistic. This helped me better understand how apps suggest music and how bias can be introduced through feature weighting. 
