@@ -42,7 +42,6 @@ Acousticness → 1 - |song_acousticness - user_acousticness|
 Songs are scored based on these rules and then ranked from highest to lowest score. The top K songs are recommended.
 
 ---
-
 ### System Flow
 
 ```mermaid
