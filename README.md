@@ -117,12 +117,24 @@ You can add more tests in `tests/test_recommender.py`.
 
 ---
 
-## Experiments You Tried
-
 
 ## Sample CLI Output
 
 ![Recommender Output](output.png)
+![Recommender Output](chillLofi.png)
+![Recommender Output](highEnergy.png)
+![Recommender Output](intense.png)
+
+Accuracy and Observations
+
+The recommendations mostly feel accurate based on my expectations. For the "High-Energy Pop" profile, songs like Sunrise City ranked at the top because they matched both genre and mood and had high similarity in energy and valence. Similarly, for the "Chill Lofi" profile, lower-energy and more acoustic songs appeared higher, which aligns with how I perceive relaxed music.
+
+One interesting observation is that some songs ranked high even without a genre match because their numerical features (energy, valence, etc.) were very close to the user’s preferences. This shows that the system balances categorical and numerical features effectively.
+
+However, I noticed that songs with strong genre matches tend to dominate the top results. This suggests that the genre weight might be slightly too high, which could reduce diversity in recommendations.
+
+
+## Experiments You Tried
 
 
 Use this section to document the experiments you ran. For example:

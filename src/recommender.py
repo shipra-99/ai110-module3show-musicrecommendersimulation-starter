@@ -114,7 +114,6 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
     return score, reasons
 
 def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tuple[Dict, float, str]]:
-     """Rank songs by score and return top K recommendations."""
     scored_songs = []
 
     for song in songs:

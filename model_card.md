@@ -61,29 +61,23 @@ Prompts:
 
 ## 6. Limitations and Bias 
 
-Where the system struggles or behaves unfairly. 
+This recommender system has a few limitations due to its simple scoring logic and small dataset. First, it tends to over-prioritize certain features like genre or energy depending on the assigned weights, which can create a “filter bubble” where similar types of songs are repeatedly recommended.
 
-Prompts:  
+Second, the system relies only on a limited set of features (genre, mood, and numerical attributes) and does not consider deeper aspects like lyrics, context, or user listening history. This can lead to less personalized or sometimes misleading recommendations.
 
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
+Finally, because the dataset is small and not fully diverse, the system may favor certain genres more often and fail to provide a wide variety of suggestions. 
 
 ---
 
 ## 7. Evaluation  
 
-How you checked whether the recommender behaved as expected. 
+I tested the recommender using three different user profiles: High-Energy Pop, Chill Lofi, and Intense Rock. For each profile, I checked whether the top recommended songs matched the expected vibe based on genre, mood, and energy.
 
-Prompts:  
+The results mostly matched my expectations. For example, High-Energy Pop recommended upbeat and energetic songs, while Chill Lofi showed slower and more acoustic tracks. Intense Rock prioritized high-energy and intense songs.
 
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
+One surprising observation was that some songs ranked high even without matching the genre because their numerical features (like energy and valence) were very close to the user’s preferences. This shows that the system relies heavily on similarity scores.
 
-No need for numeric metrics unless you created some.
+I also ran a small experiment by increasing the weight of energy and reducing genre importance. This caused songs with closer energy levels to rank higher, even if they did not match the genre, making the recommendations more diverse but sometimes less accurate.
 
 ---
 
